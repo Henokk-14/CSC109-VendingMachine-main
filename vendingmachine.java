@@ -11,4 +11,6 @@ public class vendingmachine {
       }
       System.out.println("Amount of numbers printed is: " + count);
     }
+
+    
 }
