@@ -1,6 +1,7 @@
 // Testing
 public class vendingmachine {
   // counts down form 10
+  // added a comment
     public static void main(String[] args) {
       int test = 10;
       int count = 0;
@@ -12,5 +13,5 @@ public class vendingmachine {
       System.out.println("Amount of numbers printed is: " + count);
     }
 
-    
+
 }
