@@ -16,14 +16,7 @@ public class vendingmachine {
       initializeCandiesInMatrix();
       ShowInstructions();
     }
-  public static void initializeCandiesInMatrix(){
-    candies[0] = new String[]{"Resses", "Doritos", "Gobstopper", "Hersheys Chochlate bar"};
-    candies[1] = new String[]{"Staceys Chips", "Poptart","Skittels","Pretzels"};
-    candies[2] = new String[]{"cheetos", "lays potato chips","Lays barbque chips", "Beef jurkey"};
-    candies[3] = new String[]{"M&Ms", "peanut M&M's","Ruffles","Fritos"};
-    candies[4] = new String[]{"Sun Chips", "Smart pop","Chocholate cookie","Sun flower seeds"};
-  }
-  public void ShowInstructions(){
+public void ShowInstructions(){
     System.out.println("Welcome to our Vending machine! Please enter how much money that \nyou currently have we only accept dollers please no cents or \nyou will be ask you to reinput.");
     Boolean inputflag = true;
     while(inputflag) {
@@ -41,12 +34,3 @@ public class vendingmachine {
     }
     ShowCredits();
   }
-  public static void ShowCredits(){
-    System.out.format("Your credits in this machine is $%d.00 \n", CustomerAmtOfDollars);
-  }
-    public static void main(String[] args) {
-      vendingmachine run = new vendingmachine();
-      run.vendingmachine();
-      }
-
-}
