@@ -18,6 +18,8 @@ public class vendingmachine {
         ShowInstructions();
         ShowVendingMachine();
         InitializeCandyCost();
+        ShowCandies();
+        transaction();
 
     }
 
@@ -78,6 +80,64 @@ public class vendingmachine {
             total = total + 1.0;
         }
         return total;
+    }
+    public static void ShowCandies(){
+      for(int i = 0; i< candies.length; i++){
+        for(int j = 0; j< candies[0].length; j++){
+          System.out.print(candies[i][j]+ ", ");
+        }
+        System.out.println();
+      }
+    }
+
+    public static void transaction(){
+      System.out.println("\nPlease type in from the options above using the button options");
+      System.out.print("Button Selected -> ");
+      String buttonVal = input.nextLine();
+      try {
+        String column = buttonVal.substring(0, buttonVal.length()/2).toLowerCase();
+        String row = buttonVal.substring(buttonVal.length()/2);
+        int rowInt = Integer.parseInt(row);
+        rowInt = rowInt - 1;
+        int c1 = 99;
+        switch(column){
+          case ("a"): c1 = 0; break;
+          case ("b"): c1 = 1; break;
+          case ("c"): c1 = 2; break;
+          case ("d"): c1 = 3; break;
+          case ("e"): c1 = 4; break;
+          default: System.out.print("\033[0;31m" + "Invalid input please try again." + "\033[0m");
+          transaction();
+          break;
+        }
+        System.out.println("You have selected " + candies[c1][rowInt] + " the price is $"+ candyPrices[c1][rowInt]);
+        System.out.println("Do you confirm?");
+        System.out.print("(Yes or No) -> ");
+        String yesNo = input.nextLine();
+        if (yesNo.equalsIgnoreCase("yes")){
+          System.out.println( "Your change will be $" + (AvailBal - candyPrices[c1][rowInt]));
+          System.out.println( "Please take your change and have a good rest of your day :)");
+          //System.out.println("You have selected " + candies[c1][rowInt] + " the price is $"+ candyPrices[c1][rowInt]);
+        } else if (yesNo.equalsIgnoreCase("no")) {
+          System.out.println("Do you want to make another choice?");
+          System.out.print("(Yes or No) -> ");
+          String DDconf = input.nextLine();
+          if (DDconf.equalsIgnoreCase("yes")){
+            transaction();
+          } else if ((DDconf.equalsIgnoreCase("no"))) {
+            System.out.println("It's okay keep the money you could use it take your $" + AvailBal + " back.");
+          } else {
+            System.out.println("\033[0;31m" + "Invalid input please try again." + "\033[0m");
+            transaction();
+          }
+        } else {
+          System.out.println("\033[0;31m" + "invalid input please try again" + "\033[0m");
+          transaction();
+        }
+      } catch (Exception e){
+        System.out.println("\033[0;31m" + "Invalid input please try again." + "\033[0m");
+        transaction();
+      }
     }
 
     public static void main(String[] args) {
